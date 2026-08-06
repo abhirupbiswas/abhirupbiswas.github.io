@@ -300,21 +300,21 @@
             const leftSidebar = document.querySelector('.dynamic-left-sidebar');
 
             if (scrollWrapper && leftSidebar) {
-                let isScrolled = false;
+                let lastScrollTop = 0;
 
                 scrollWrapper.addEventListener('scroll', () => {
                     const scrollTop = scrollWrapper.scrollTop;
 
-                    // Trigger collapse when scrolling down past 20px
-                    if (!isScrolled && scrollTop > 20) {
-                        isScrolled = true;
+                    // Collapse image when scrolling down past 30px
+                    if (scrollTop > 30 && scrollTop > lastScrollTop) {
                         leftSidebar.classList.add('image-scrolled-out');
                     } 
-                    // Only restore image when user explicitly scrolls back up to the absolute top
-                    else if (isScrolled && scrollTop <= 5) {
-                        isScrolled = false;
+                    // Restore image ONLY when fully at the top
+                    else if (scrollTop <= 2) {
                         leftSidebar.classList.remove('image-scrolled-out');
                     }
+
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
                 });
             }
         });
