@@ -300,21 +300,15 @@
             const leftSidebar = document.querySelector('.dynamic-left-sidebar');
 
             if (scrollWrapper && leftSidebar) {
-                let lastScrollTop = 0;
-
                 scrollWrapper.addEventListener('scroll', () => {
-                    const scrollTop = scrollWrapper.scrollTop;
-
-                    // Collapse image when scrolling down past 30px
-                    if (scrollTop > 30 && scrollTop > lastScrollTop) {
+                    // Instantly collapse image when scrolling down past 20px
+                    if (scrollWrapper.scrollTop > 20) {
                         leftSidebar.classList.add('image-scrolled-out');
                     } 
-                    // Restore image ONLY when fully at the top
-                    else if (scrollTop <= 2) {
+                    // Bring back profile image ONLY when scrolled all the way back to the top (0px)
+                    else if (scrollWrapper.scrollTop === 0) {
                         leftSidebar.classList.remove('image-scrolled-out');
                     }
-
-                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
                 });
             }
         });
