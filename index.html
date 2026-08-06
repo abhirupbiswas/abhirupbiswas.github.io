@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhirup Biswas</title>
+    <!-- Google Fonts: Outfit for Cinematic Headline & Plus Jakarta Sans for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-state">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo" onclick="showHomeView()">Abhirup Biswas</div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showHomeView(); return false;">Home</a></li>
+            <li><a href="#" onclick="showAboutView(); return false;">About</a></li>
+            <li><a href="#" onclick="showProjectsView(); return false;">Projects</a></li>
+            <li><a href="#" onclick="showBlogsView(); return false;">Blogs</a></li>
+            <li><a href="#" onclick="showContactView(); return false;">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Master Workspace Grid -->
+    <div class="workspace-container">
+
+        <!-- Global Heading for About Section -->
+        <div class="about-global-header">
+            <h2>About Me</h2>
+            <p class="section-subtitle">A brief intro about myself and my interests</p>
+        </div>
+        
+        <!-- LEFT SIDEBAR: Holds Image AND Education Box -->
+        <div class="dynamic-left-sidebar">
+            <div class="image-frame-box">
+                <img src="images/profile_test.jpg" alt="Abhirup Biswas" class="profile-photo">
+            </div>
+            
+            <div class="sidebar-scroll-wrapper">
+                <aside class="education-box">
+                    <h3>Education</h3>
+                    <div class="edu-card">
+                        <h4>5 Year BSMS Dual Degree</h4>
+                        <p class="institution">IISER Kolkata, India</p>
+                        <p class="duration">Major: Physics</p>
+                        <p class="duration">Minor: Earth Science</p>
+                    </div>
+                </aside>
+
+                <aside class="education-box">
+                    <h3>Research Interests</h3>
+                    <div class="res-card">
+                        <p>Planetary atmospheres</p>
+                        <p>Observational Astrochemistry</p>
+                        <p>Terrestrial planets and Exoplanets</p>
+                    </div>
+                </aside>
+
+                <aside class="education-box">
+                    <h3>Personal Interests</h3>
+                    <div class="personal-card">
+                        <p>Swimming</p>
+                        <p>Table Tennis</p>
+                        <p>Playing Flute</p>
+                        <p>Single-player narrative Games</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <!-- STATE 1: Home Screen Text Panel -->
+        <div class="panel home-panel">
+            <h1>Hi, I'm <span class="highlight">Abhirup</span></h1>
+
+            <div class="dynamic-ticker">
+                <span class="ticker-prefix">Interested in </span>
+                <span class="typewriter-text" data-words='["Observational Astrochemistry", "Planetary atmospheres", "Exoplanet Detection"]'></span>
+            </div>
+
+            <p class="tagline">I am a 4th-year BS-MS student at IISER Kolkata, curious about terrestrial planets, exoplanets, and the atmospheres that shape them. I'm also a big fan of nature documentaries, especially those narrated by Sir David Attenborough.</p>
+        </div>
+
+        <!-- STATE 2: Detailed About Screen Panel (Right side) -->
+        <div class="panel about-panel">
+            <main class="scientific-profile">
+                <p>Hey, I am Abhirup Biswas, a 4th year undergraduate student majoring in Physics with a minor in Earth Science at the Indian Institute of Science Education and Research (IISER) Kolkata. I have always been fascinated about planets as a whole, and so I plan to work on some phenomenal breakthroughs in planetary science.</p>
+                <p>Currently, I am doing an internship at the Physical Research Laboratory (PRL), Ahmedabad focusing on estimating shock pressure from meteorite impacts. For this study, I also got the opportunity to collaborate with the Planetary Science Laboratory at the Space Applications Centre (SAC), Ahmedabad.</p>
+                <p>Previously, I have remotely worked on a project on the development of a code, related to the modelling of a protoplanetary disk, at NISER Bhubaneswar. I have also worked on 21cm Cosmology, at IISER Kolkata, which involved the morphological analysis of ionized and neutral hydrogen bubbles using simulated data, based on the future Square Kilometre Array (SKA) Radio telescope.</p>
+                <p>Apart from my academic work, I recently taught myself to swim, and thoroughly enjoy going to early morning swimming sessions. Evening jogs have also really helped me to detox myself from academic workload. I occasionally play table tennis, and I am a casual gamer who prefers good, story driven games. (In particular, Hellblade left a deep impact on me, it explores the concept of "psychosis" and what such patients go through daily.)</p>
+            </main>
+        </div>
+
+        <!-- STATE 3: Projects Screen Panel -->
+        <div class="panel projects-panel">
+            <div class="projects-container">
+                <h2 class="hud-heading">Projects</h2>
+                <p class="section-subtitle">A chronological timeline of my projects and research experiences.</p>
+                
+                <!-- Timeline Container -->
+                <div class="sleek-timeline">
+
+                    <!-- Project 1 -->
+                    <div class="timeline-row">
+                        <div class="timeline-marker">
+                            <span class="marker-dot"></span>
+                        </div>
+                        <div class="project-written-entry">
+                            <div class="project-header">
+                                <h3>21cm Cosmology & Morphological Analysis</h3>
+                            </div>
+                            <p class="project-desc">
+                                Analyzed ionized and neutral hydrogen bubbles using simulated radio array data tailored to the future Square Kilometre Array (SKA) telescope to study cosmic reionization morphology.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="timeline-row">
+                        <div class="timeline-marker">
+                            <span class="marker-dot"></span>
+                        </div>
+                        <div class="project-written-entry">
+                            <div class="project-header">
+                                <h3>Protoplanetary Disk Modeling Code</h3>
+                            </div>
+                            <p class="project-desc">
+                                Learned about protoplanetary disks and its physical and chemical evolution, and how such a setup can be modelled computationally.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="timeline-row">
+                        <div class="timeline-marker">
+                            <span class="marker-dot"></span>
+                        </div>
+                        <div class="project-written-entry">
+                            <div class="project-header">
+                                <h3>Estimation of Shock Pressure from meteorite impact</h3>
+                            </div>
+                            <p class="project-desc">
+                                Explored the techniques of estimating shock pressure from mineral grains in the meteorite or impact site. It involved experimental analysis of the samples such as micro-Raman and micro-FTIR.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>      
+
+        <!-- STATE 4: Blogs Screen Panel -->
+        <div class="panel blogs-panel">
+            <div class="blogs-container">
+                <h2>Blogs</h2>
+                <p class="section-subtitle">A collection of personal thoughts and travel experiences.</p>
+
+                <div class="under-construction-box">
+                    <p class="under-construction-text">Under construction</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- STATE 5: Contact Screen Panel -->
+        <div class="panel contact-panel">
+            <div class="contact-container">
+                <h2>Get in Touch</h2>
+                <p class="section-subtitle">I am always open for discussions, exchanging ideas or just to chat.</p>
+
+                <!-- Centered Horizontal Platforms Grid -->
+                <div class="contact-circle-grid">
+                    
+                    <!-- Email -->
+                    <a href="mailto:ab23ms103@iiserkol.ac.in" class="contact-circle-item" title="Email">
+                        <div class="contact-circle-icon">
+                            <svg class="brand-svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <span class="contact-circle-label">Email</span>
+                    </a>
+
+                    <!-- Official LinkedIn Logo -->
+                    <a href="https://www.linkedin.com/in/abhirup2005/" target="_blank" rel="noopener noreferrer" class="contact-circle-item" title="LinkedIn">
+                        <div class="contact-circle-icon">
+                            <svg class="brand-svg" viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+                                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                            </svg>
+                        </div>
+                        <span class="contact-circle-label">LinkedIn</span>
+                    </a>
+
+                    <!-- Official GitHub Octocat Logo -->
+                    <a href="https://github.com/abhirupbiswas" target="_blank" rel="noopener noreferrer" class="contact-circle-item" title="GitHub">
+                        <div class="contact-circle-icon">
+                            <svg class="brand-svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                            </svg>
+                        </div>
+                        <span class="contact-circle-label">GitHub</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showAboutView() {
+            document.body.className = "about-state";
+        }
+        function showHomeView() {
+            document.body.className = "home-state";
+        }
+        function showProjectsView() {
+            document.body.className = "projects-state";
+        }
+        function showBlogsView() {
+            document.body.className = "blogs-state";
+        }
+        function showContactView() {
+            document.body.className = "contact-state";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const target = document.querySelector('.typewriter-text');
+            if (!target) return;
+
+            const words = JSON.parse(target.getAttribute('data-words'));
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let isCorrectingTypo = false;
+            let typoStr = "";
+
+            const keyboardRandom = "abcdefghijklmnopqrstuvwxyz";
+
+            function typeAnimation() {
+                const currentWord = words[wordIndex];
+                let currentSpeed = isDeleting ? 35 : 75; 
+
+                if (isCorrectingTypo) {
+                    target.textContent = currentWord.substring(0, charIndex) + typoStr.substring(0, typoStr.length - 1);
+                    typoStr = typoStr.substring(0, typoStr.length - 1);
+                    
+                    if (typoStr.length === 0) {
+                        isCorrectingTypo = false;
+                        currentSpeed = 250;
+                    } else {
+                        currentSpeed = 50;
+                    }
+                    setTimeout(typeAnimation, currentSpeed);
+                    return;
+                }
+
+                if (isDeleting) {
+                    target.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+
+                    if (charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length; 
+                        currentSpeed = 400;
+                    }
+                    setTimeout(typeAnimation, currentSpeed);
+                    return;
+                }
+
+                if (!isDeleting && charIndex > 3 && charIndex < currentWord.length - 2 && Math.random() < 0.12) {
+                    const randomChar = keyboardRandom[Math.floor(Math.random() * keyboardRandom.length)];
+                    typoStr = randomChar;
+                    target.textContent = currentWord.substring(0, charIndex) + typoStr;
+                    
+                    isCorrectingTypo = true;
+                    currentSpeed = 350;
+                    setTimeout(typeAnimation, currentSpeed);
+                    return;
+                }
+
+                target.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+
+                if (charIndex === currentWord.length) {
+                    currentSpeed = 2200;
+                    isDeleting = true;
+                }
+
+                setTimeout(typeAnimation, currentSpeed);
+            }
+
+            setTimeout(typeAnimation, 1000);
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const scrollWrapper = document.querySelector('.sidebar-scroll-wrapper');
+            const leftSidebar = document.querySelector('.dynamic-left-sidebar');
+
+            if (scrollWrapper && leftSidebar) {
+                let isScrolled = false;
+
+                scrollWrapper.addEventListener('scroll', () => {
+                    const scrollTop = scrollWrapper.scrollTop;
+
+                    // Trigger collapse when scrolling down past 20px
+                    if (!isScrolled && scrollTop > 20) {
+                        isScrolled = true;
+                        leftSidebar.classList.add('image-scrolled-out');
+                    } 
+                    // Only restore image when user explicitly scrolls back up to the absolute top
+                    else if (isScrolled && scrollTop <= 5) {
+                        isScrolled = false;
+                        leftSidebar.classList.remove('image-scrolled-out');
+                    }
+                });
+            }
+        });
+    </script>
+
+    <p class="image-credit">Background photo via <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+
+    <!-- Persistent Copyright Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Abhirup Biswas</p>
+    </footer>
+
+</body>
+</html>
