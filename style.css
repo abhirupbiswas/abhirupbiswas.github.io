@@ -7,7 +7,7 @@
     padding: 0;
 }
 
-/* Default dark background for all states (About, Projects, Blogs, Contact) */
+/* Base Body: Fixed to viewport height to maintain exact desktop layout */
 body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
@@ -27,18 +27,18 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; /* Placed behind all workspace content */
+    z-index: -1;
     background: 
         radial-gradient(circle at 25% 50%, rgba(243, 156, 18, 0.12), transparent 60%),
         url('images/jupiter_test.png') no-repeat left center / cover,
         #030508;
-    filter: blur(12px) brightness(0.5); /* Slightly blurred & dim by default for secondary pages */
+    filter: blur(12px) brightness(0.5);
     opacity: 0.85;
-    transform: scale(1.05); /* Scales slightly to prevent blurred edge clipping */
+    transform: scale(1.05);
     transition: filter 0.6s ease, opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* Clear, crisp focus strictly on the Home Screen */
+/* Clear focus on Home Screen */
 body.home-state::before {
     filter: blur(0px) brightness(0.72);
     opacity: 1;
@@ -118,29 +118,24 @@ body.home-state::before {
     pointer-events: all;
 }
 
-/* --- THE DYNAMIC LEFT SIDEBAR COLUMN --- */
+/* --- THE DYNAMIC LEFT SIDEBAR COLUMN (CENTERED IMAGE) --- */
 .dynamic-left-sidebar {
     position: absolute;
     z-index: 10;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.35s ease, visibility 0.35s ease, top 0.6s cubic-bezier(0.25, 1, 0.5, 1), left 0.6s cubic-bezier(0.25, 1, 0.5, 1), width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: opacity 0.5s ease, visibility 0.5s ease, top 0.5s ease, left 0.5s ease ,transform 0.5s ease;
 }
 
 .image-frame-box {
     width: min(380px, 32vw);
     height: min(380px, 32vw);
     flex-shrink: 0;
-    transform-origin: top center;
-    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-                height 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-                opacity 0.4s ease, 
-                margin 0.5s cubic-bezier(0.25, 1, 0.5, 1),
-                transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1), height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .profile-photo {
@@ -153,58 +148,26 @@ body.home-state::before {
     box-shadow: 0 0 35px rgba(243, 156, 18, 0.25);
 }
 
-/* Sidebar Scroll Container Stabilization */
-.sidebar-scroll-wrapper {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 20px;
-    overflow-y: auto;
-    max-height: calc(100vh - 270px); 
-    padding-right: 5px;
-    padding-bottom: 20px;
-    scroll-behavior: smooth; /* Enables smooth native scrolling */
-    transition: max-height 0.4s ease, margin-top 0.4s ease;
-}
-
-/* Image Collapse Animation */
-.about-state .dynamic-left-sidebar.image-scrolled-out .image-frame-box {
-    height: 0px !important;
-    min-height: 0px !important;
-    opacity: 0 !important;
-    margin-bottom: 0px !important;
-    transform: scale(0.8);
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.about-state .dynamic-left-sidebar.image-scrolled-out .sidebar-scroll-wrapper {
-    margin-top: 0px !important;
-    max-height: calc(100vh - 270px) !important;
-}
-
-/* Scrollbars */
-.sidebar-scroll-wrapper::-webkit-scrollbar,
+/* Custom Scrollbar for inner content panels */
 .about-panel::-webkit-scrollbar,
 .projects-panel::-webkit-scrollbar,
 .blogs-panel::-webkit-scrollbar,
 .contact-panel::-webkit-scrollbar {
-    width: 4px;
+    width: 5px;
 }
-.sidebar-scroll-wrapper::-webkit-scrollbar-thumb,
 .about-panel::-webkit-scrollbar-thumb,
 .projects-panel::-webkit-scrollbar-thumb,
 .blogs-panel::-webkit-scrollbar-thumb,
 .contact-panel::-webkit-scrollbar-thumb {
-    background: rgba(243, 156, 18, 0.3);
+    background: rgba(243, 156, 18, 0.4);
     border-radius: 10px;
 }
 
 /* Sidebar State 1: On Home Screen */
 .home-state .dynamic-left-sidebar {
-    top: 22vh;
+    top: 45%;
     left: 8vw;
+    transform: translateY(-50%);
     width: 34vw;
     opacity: 1;
     visibility: visible;
@@ -215,41 +178,19 @@ body.home-state::before {
     height: min(380px, 32vw);
 }
 
-/* Sidebar State 2: Active ONLY in ABOUT section */
+/* Sidebar State 2: Centered image on ABOUT section */
 .about-state .dynamic-left-sidebar {
-    top: 210px;
-    left: 8vw;
-    width: min(340px, 28vw);
-    height: calc(100vh - 290px); 
-    overflow: hidden; 
+    top: 50%;
+    left: 6vw;
+    transform: translateY(-50%);
+    width: 25vw;
     opacity: 1;
     visibility: visible;
     pointer-events: all;
 }
 .about-state .image-frame-box {
-    width: min(220px, 26vw);
-    height: min(220px, 26vw);
-}
-.about-state .sidebar-scroll-wrapper {
-    display: flex;
-    opacity: 1;
-    pointer-events: all;
-    transform: translateY(0);
-}
-
-/* Collapse & Slide Up Animation */
-.about-state .dynamic-left-sidebar.image-scrolled-out .image-frame-box {
-    height: 0px !important;
-    width: 0px !important;
-    opacity: 0 !important;
-    transform: scale(0.2);
-    margin-bottom: 0px !important;
-    overflow: hidden;
-}
-
-.about-state .dynamic-left-sidebar.image-scrolled-out .sidebar-scroll-wrapper {
-    margin-top: 0px !important;
-    max-height: calc(100vh - 270px) !important;
+    width: min(280px, 22vw);
+    height: min(280px, 22vw);
 }
 
 .projects-state .dynamic-left-sidebar,
@@ -275,31 +216,28 @@ body.home-state::before {
 
 .image-credit {
     position: fixed;
-    bottom: 48px;                     /* Positioned right above the footer bar */
+    bottom: 48px;
     left: 0;
-    width: 100%;                       /* Spans screen width to achieve true horizontal centering */
-    text-align: center;                /* Center-aligned with the copyright text */
+    width: 100%;
+    text-align: center;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.72rem;
-    font-weight: 300;                  /* Thin font styling */
-    color: rgba(226, 232, 240, 0.45);   /* Semi-transparent light gray */
+    font-weight: 300;
+    color: rgba(226, 232, 240, 0.45);
     letter-spacing: 0.5px;
-    z-index: 99;                       /* Above page backdrop, below navbar/footer overlay */
-    
-    /* Reveal transition for Home state only */
+    z-index: 99;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s ease;
 }
 
-/* Show credit strictly on the Home view */
 body.home-state .image-credit {
     opacity: 1;
     pointer-events: all;
 }
 
 .image-credit a {
-    color: rgba(243, 156, 18, 0.75);   /* Subtle Jovian amber accent */
+    color: rgba(243, 156, 18, 0.75);
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -326,13 +264,13 @@ body.home-state .image-credit {
 }
 .typewriter-text {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
-    color: #f39c12 !important;               /* Solid Jovian Amber */
+    color: #f39c12 !important;
     font-weight: 600 !important;
     letter-spacing: 0.8px !important;
     white-space: nowrap;
     text-transform: none;                      
     text-shadow: none !important;              
-    border: none !important;                 /* Removed box borders */
+    border: none !important;
     padding-right: 0 !important;
 }
 .typewriter-text::after {
@@ -343,12 +281,8 @@ body.home-state .image-credit {
     animation: cursor-blink 0.85s step-end infinite;
 }
 @keyframes cursor-blink {
-    from, to { 
-        opacity: 0; 
-    }
-    50% { 
-        opacity: 1; 
-    }
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
 }
 
 .tagline { 
@@ -377,23 +311,39 @@ body.home-state .image-credit {
     transform: translateX(30px);
 }
 
+/* ABOUT PANEL: Confined strictly between top heading and bottom footer */
 .about-panel {
-    top: 210px;
-    left: 35vw;
-    max-width: 57vw;
-    max-height: calc(100vh - 270px);
-    overflow-y: auto;
-    padding-right: 20px;
+    top: 220px;
+    left: 33vw;
+    max-width: 62vw;
+    max-height: calc(100vh - 280px); /* Caps height right above footer */
+    overflow-y: auto;                 /* Allows inner scroll strictly upto content length */
+    padding-right: 15px;
     transform: translateX(30px);
 }
 
+/* Horizontal Flashcards Container */
+.about-cards-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 28px;
+    width: 100%;
+}
+
+.about-cards-row .education-box {
+    flex: 1;
+    min-width: 0;
+}
+
+/* OTHER PANELS */
 .projects-panel, .blogs-panel, .contact-panel {
     top: 110px;
     left: 50%;
     transform: translate(-50%, 25px);
     width: 90%;
     max-width: 850px;
-    max-height: calc(100vh - 190px);
+    max-height: calc(100vh - 180px);
     overflow-y: auto;
     padding: 0 20px 40px 20px;
 }
@@ -429,20 +379,19 @@ body.home-state .image-credit {
     filter: blur(0); 
 }
 
-/* ENLARGED SIDEBAR CARDS */
+/* FLASHCARD BOX STYLING */
 .education-box {
     background: rgba(15, 20, 28, 0.7);
     border: 1px solid rgba(243, 156, 18, 0.25);
     color: #fff;
-    padding: 24px;
+    padding: 20px;
     border-radius: 14px;
     box-shadow: 0 0 15px rgba(243, 156, 18, 0.15);
-    width: 100%;
     backdrop-filter: blur(8px);
 }
 .education-box h3 { 
     margin-bottom: 12px; 
-    font-size: 1.1rem; 
+    font-size: 1.05rem; 
     color: #f8fafc; 
     text-transform: uppercase; 
     letter-spacing: 1.2px; 
@@ -450,25 +399,25 @@ body.home-state .image-credit {
 }
 .edu-card h4 { 
     color: #f39c12; 
-    font-size: 1.08rem; 
+    font-size: 1rem; 
     font-weight: 600; 
 }
 .institution { 
     color: #e2e8f0;
     font-family: 'Plus Jakarta Sans', sans-serif; 
-    font-size: 0.98rem; 
+    font-size: 0.92rem; 
     margin-top: 4px; 
 }
 .duration { 
     color: #cbd5e1; 
-    font-size: 0.9rem; 
+    font-size: 0.88rem; 
 }
 
 .res-card p, .personal-card p {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.98rem;
+    font-size: 0.92rem;
     color: #e2e8f0;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     padding-left: 14px;
     position: relative;
 }
@@ -533,37 +482,36 @@ body.home-state .image-credit {
     display: inline-block;
 }
 
-/* Persistent Footer */
+/* Persistent Footer Bar docked at screen bottom */
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     padding: 12px 0;
-    background: rgba(11, 8, 0, 0.5);
+    background: rgba(11, 8, 0, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(243, 156, 18, 0.2); /* Slightly sharper Jovian line */
+    border-top: 1px solid rgba(243, 156, 18, 0.2);
     text-align: center;
     z-index: 100;
 }
 
 .footer p {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    color: #cbd5e1;           /* Lighter, clearer gray for high contrast */
+    color: #cbd5e1;
     font-size: 0.82rem;
-    letter-spacing: 0.8px;    /* Slightly wider tracking for modern feel */
+    letter-spacing: 0.8px;
     font-weight: 500;
 }
 
-/* Optional: Highlight your name or copyright year in amber */
 .footer p span {
     color: #f39c12;
     font-weight: 600;
 }
 
 /* ==========================================================================
-   VERTICAL LINE & HEADING ACCENTS (JOVIAN GLOW)
+   HEADING ACCENTS & TIMELINE (JOVIAN GLOW)
    ========================================================================== */
 
 .projects-container,
@@ -596,7 +544,6 @@ body.home-state .image-credit {
     border-bottom: none !important;
 }
 
-/* Underline effect tuned to Jovian Amber */
 .projects-container h2::after,
 .blogs-container h2::after,
 .contact-container h2::after,
@@ -614,7 +561,6 @@ body.home-state .image-credit {
     animation: hudGlow 3s infinite alternate ease-in-out;
 }
 
-/* Timeline vertical line */
 .sleek-timeline {
     position: relative;
     padding-left: 36px;
